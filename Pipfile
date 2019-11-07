@@ -18,6 +18,7 @@ sklearn = "*"
 pytesseract = "*"
 scipy = "*"
 wget = "*"
+tqdm = "*"
 
 [requires]
 python_version = "3.7"

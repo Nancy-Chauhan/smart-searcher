@@ -25,6 +25,9 @@ def success():
         'imagenet': imagenet.predict(tmp_path)
     })
 
+@app.route('/search', methods=['POST'])
+def search():
+    return jsonify([])
 
 if __name__ == '__main__':
     logging.basicConfig()
