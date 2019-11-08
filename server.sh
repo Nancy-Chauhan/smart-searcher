@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $1 == "dev" ]
+if [ "dev" = "$1" ]
 then
     echo 'Starting development server...'
     python3 -m smartsearcher.server
