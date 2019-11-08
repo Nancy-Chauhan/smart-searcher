@@ -104,10 +104,10 @@
                 "complete"
             ],
             "hashes": [
-                "sha256:81c7891f0d2e7ac03d1f7fabf1f639360a1db52c03a7155ba9b08e9ee6280f2b",
-                "sha256:876aaae1b36e92353bc42503283981c6e54718f897746991f13ef31a87efe4f6"
+                "sha256:0dfcb2bd7963b34fbebaa0dd393bae9a6323a6f33cf1260f3ab0ee93ba9fa89f",
+                "sha256:ce97aa2bc079bf43d43dbef9408f93f9a6287851b7f71188298e816f6ffce7dd"
             ],
-            "version": "==2.6.0"
+            "version": "==2.7.0"
         },
         "decorator": {
             "hashes": [
@@ -125,10 +125,10 @@
         },
         "distributed": {
             "hashes": [
-                "sha256:30b0ca195ace1e39bdd278bf1ad257f7674b3e2b8e7a2a37ce7e2ade4aecccf3",
-                "sha256:5f1082c158e976e23b05fa4d22566fec16c013c9bba12a428ea7be3fd47be4e0"
+                "sha256:3bbbe31951b6bbc338f767c652add1669cdb7b4b8f486bcc51029956af19ef4b",
+                "sha256:f099a2b552d42913f8cf3a6f5a9e1a15fbab0354e5bd49e9da04199fea2a6c63"
             ],
-            "version": "==2.6.0"
+            "version": "==2.7.0"
         },
         "entrypoints": {
             "hashes": [
