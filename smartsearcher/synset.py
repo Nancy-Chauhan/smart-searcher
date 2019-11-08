@@ -14,7 +14,7 @@ def __init():
     with open('data/words.txt') as f:
         for line in f:
             k, v = line.strip().split('\t')
-            __labels[k] = v.split(',')[0]
+            __labels[k] = [w.strip() for w in v.split(',')]
 
     __initialized = True
 

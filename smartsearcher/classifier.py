@@ -9,7 +9,7 @@ import numpy as np
 
 import sys
 
-from . import imagenet_synset
+from . import synset
 
 model = InceptionResNetV2(weights='imagenet')
 
@@ -25,8 +25,7 @@ def predict(img_path):
     # (one such list for each sample in the batch)
 
     return [{
-            'cls': p[0],
-            'name': p[1],
             'probability': float(p[2]),
-            'categories': imagenet_synset.tree(p[0])
-            } for p in decode_predictions(preds, top=3)[0]]
+            'name': p[1],
+            'categories': synset.tree(p[0])
+            } for p in decode_predictions(preds, top=2)[0]]
