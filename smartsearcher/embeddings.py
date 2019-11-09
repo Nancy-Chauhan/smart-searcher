@@ -10,8 +10,8 @@ from tqdm import tqdm
 import os
 import logging
 
-IMG_WIDTH = 224
-IMG_HEIGHT = 224
+IMG_WIDTH = 100
+IMG_HEIGHT = 100
 
 logger = logging.getLogger(__name__)
 

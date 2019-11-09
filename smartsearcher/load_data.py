@@ -88,7 +88,7 @@ def __migrate():
         with conn.cursor() as cur:
             cur.execute(
                 '''
-                DROP TABLE products;
+                DROP TABLE IF EXISTS products;
                 CREATE TABLE products (
                     id bigint,
                     gender varchar(32),

@@ -19,4 +19,4 @@ done
 
 set -x
 
-sed -E "/^($PATTERN)/d;s/,//10" "$1"
+gsed -E "/^($PATTERN)/d; s/,//10g;" "$1"
