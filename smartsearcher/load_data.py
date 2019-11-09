@@ -103,6 +103,7 @@ def __migrate():
                     );
                 '''
             )
+            cur.execute('CREATE EXTENSION IF NOT EXISTS tsm_system_rows;')
 
 
 if __name__ == "__main__":

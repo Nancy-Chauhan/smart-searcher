@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
 from . import classifier
@@ -11,7 +12,7 @@ import os
 import logging
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def upload():
@@ -42,4 +43,4 @@ def discover():
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     bootstrap.bootstrap()
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

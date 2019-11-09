@@ -24,7 +24,7 @@ def find_images_by_category(category):
     with db.get_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(
-                'SELECT * FROM products WHERE articleType = %s', (category,))
+                'SELECT * FROM products WHERE articleType = %s LIMIT 2000', (category,))
 
             return __map_result_to_dicts(cur.fetchall())
 
@@ -32,7 +32,6 @@ def find_images_by_category(category):
 def find_random_products(limit=30):
     with db.get_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute('CREATE EXTENSION tsm_system_rows;')
             cur.execute(
                 'SELECT * FROM products TABLESAMPLE SYSTEM_ROWS(%s);', (limit,))
 
