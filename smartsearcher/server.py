@@ -5,6 +5,7 @@ from . import classifier
 from . import bootstrap
 from . import category_matcher
 from . import image_search
+from . import repository
 
 import os
 import logging
@@ -33,6 +34,9 @@ def search():
         'matches': image_search.find_matching_images(img_upload_path, category)
     })
 
+@app.route('/discover')
+def discover():
+    return jsonify(repository.find_random_products(30))
 
 
 if __name__ == '__main__':
