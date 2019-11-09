@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from . import classifier
 from . import bootstrap
 from . import category_matcher
+from . import image_search
 
 import os
 import logging
@@ -17,26 +18,24 @@ def upload():
 
 
 @app.route('/search', methods=['POST'])
-def success():
+def search():
     f = request.files['file']
-    tmp_path = os.path.join('tmp', secure_filename(f.filename))
-    f.save(tmp_path)
+    img_upload_path = os.path.join('tmp', secure_filename(f.filename))
+    f.save(img_upload_path)
 
-    predictions = classifier.predict(tmp_path)
+    predictions = classifier.predict(img_upload_path)
     match = category_matcher.find_category(predictions)
 
+    category = match['category']
+
     return jsonify({
-        'categories': predictions,
-        'bestMatch': match
+        'category': match,
+        'matches': image_search.find_matching_images(img_upload_path, category)
     })
 
 
-@app.route('/search', methods=['POST'])
-def search():
-    return jsonify([])
-
 
 if __name__ == '__main__':
-    logging.basicConfig()
+    logging.basicConfig(level=logging.DEBUG)
     bootstrap.bootstrap()
     app.run(debug=True)

@@ -52,7 +52,11 @@ def __calculate_embedding(img_path):
     return model.predict(x).reshape(-1)
 
 
-def get_embedding(img_path):
+def get_embedding(img_path, cached=True):
+
+    if not cached:
+        return __calculate_embedding(img_path)
+
     embeddings_path = img_path + '.npy'
 
     try:
