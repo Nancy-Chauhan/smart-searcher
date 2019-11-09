@@ -5,5 +5,5 @@ then
     echo 'Starting development server...'
     python3 -m smartsearcher.server
 else
-    gunicorn --bind 0.0.0.0:5000 smartsearcher:app
+    gunicorn --bind 0.0.0.0:5000 smartsearcher.server:app
 fi

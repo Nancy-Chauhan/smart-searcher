@@ -89,7 +89,7 @@ def __migrate():
             cur.execute(
                 '''
                 DROP TABLE products;
-                CREATE TABLE products(
+                CREATE TABLE products (
                     id bigint,
                     gender varchar(32),
                     masterCategory varchar(255),
