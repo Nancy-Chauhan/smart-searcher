@@ -1,64 +1,14 @@
 import pandas as pd
 
-__REPLACE_MAP = {
-    'Tshirts': 'tshirt',
-    'Shirts': 'shirt',
-    'Casual Shoes': 'shoes',
-    'Watches': 'watch',
-    'Sports Shoes': 'shoe',
-    'Kurtas': 'shirt',
-    'Tops': 'top',
-    'Handbags': 'handbag',
-    'Heels': 'shoes',
-    'Sunglasses': 'sunglass',
-    'Wallets': 'wallet',
-    'Flip Flops': 'shoe',
-    'Sandals': 'sandal',
-    'Briefs': 'briefs',
-    'Belts': 'belt',
-    'Backpacks': 'backpack',
-    'Socks': 'socks',
-    'Formal Shoes': 'shoe',
-    'Perfume and Body Mist': 'perfume',
-    'Jeans': 'jean',
-    'Shorts': 'shorts',
-    'Trousers': 'trouser',
-    'Flats': 'shoe',
-    'Bra': 'bra',
-    'Dresses': 'dress',
-    'Sarees': 'saree',
-    'Earrings': 'earring',
-    'Deodorant': 'perfume',
-    'Nail Polish': 'nail polish',
-    'Lipstick': 'lipstick',
-    'Track Pants': 'pant',
-    'Clutches': 'purse',
-    'Sweatshirts': 'sweatshirt',
-    'Caps': 'cap',
-    'Sweaters': 'sweater',
-    'Ties': 'tie',
-    'Jackets': 'jacket',
-    'Innerwear Vests': 'vest',
-    'Kurtis': 'shirt',
-    'Tunics': 'tunic',
-    'Nightdress': 'nightdress',
-    'Leggings': 'legging',
-    'Pendant': 'pendant',
-    'Capris': 'capri',
-    'Necklace and Chains': 'necklace',
-    'Lip Gloss': 'lipstick',
-    'Night suits': 'dress',
-    'Trunk': 'trunks',
-    'Skirts': 'skirt',
-    'Scarves': 'scarf',
-    'Ring': 'ring',
-    'Dupatta': 'scarf',
-    'Accessory Gift Set': 'gift',
-    'Cufflinks': 'cufflink',
-    'Kajal and Eyeliner': 'eyeliner'
-}
-
-__CATEGORIES = set(__REPLACE_MAP.values())
+__CATEGORIES = set([
+    'tshirt', 'shirt', 'shoes', 'watch', 'top', 'handbag', 'sunglass',
+    'wallet', 'sandal', 'briefs', 'belt', 'backpack', 'socks', 'perfume', 'jean',
+    'shorts', 'trouser', 'bra', 'dress', 'saree', 'earring', 'perfume', 'nail polish',
+    'lipstick', 'pant', 'purse', 'sweatshirt', 'cap', 'sweater', 'tie', 'jacket',
+    'vest', 'tunic', 'nightdress', 'legging', 'pendant', 'capri', 'necklace',
+    'lipstick', 'dress', 'trunks', 'skirt', 'scarf', 'ring', 'scarf', 'gift',
+    'cufflink', 'eyeliner'
+])
 
 
 def find_category(predictions):
