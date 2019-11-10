@@ -1,6 +1,7 @@
 # Smart Searcher 🔎
 
 👧🏻 SHEHACK-2019 Hackathon Project 🛠️
+Frontend : https://github.com/Nancy-Chauhan/smart-searcher-frontend 
 
 ## Pre-requisites
 
