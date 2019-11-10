@@ -31,19 +31,19 @@ def search():
     img_upload_path = os.path.join('tmp', secure_filename(f.filename))
     f.save(img_upload_path)
 
-    log.info('%s: Received search request', (req_id,))
+    log.info('%s: Received search request', req_id)
 
-    log.info('%s: Running classifier', (req_id,))
+    log.info('%s: Running classifier', req_id)
     predictions = classifier.predict(img_upload_path)
 
-    log.info('%s: Finding matching images', (req_id,))
+    log.info('%s: Finding matching images', req_id)
     match = category_matcher.find_category(predictions)
 
     category = match['category']
 
     return jsonify({
         'category': match,
-        'matches': image_search.find_matching_images(img_upload_path, category)
+        'matches': image_search.find_matching_images(img_upload_path, category, req_id)
     })
 
 @app.route('/discover')

@@ -6,12 +6,16 @@ import sys
 
 from sklearn.metrics.pairwise import cosine_similarity
 
+import logging
+import uuid
 
-def find_matching_images(query_image, category, limit=30):
+log = logging.getLogger(__name__)
+
+def find_matching_images(query_image, category, req_id=str(uuid.uuid4()), limit=30):
     images = repository.find_images_by_category(category)
 
     matches = itertools.islice(
-        __rank_images_by_similarity(query_image, images), limit)
+        __rank_images_by_similarity(query_image, images, req_id), limit)
 
     return [{'image': match[0], 'similarity': float(match[1])} for match in matches]
 
@@ -20,13 +24,21 @@ def __file_path(img_id):
     return f'data/images/{img_id}.jpg'
 
 
-def __rank_images_by_similarity(query_image, images):
+def __rank_images_by_similarity(query_image, images, req_id=str(uuid.uuid4())):
+
+    if len(images) == 0:
+        return []
+
+    log.debug('%s Generating embeddings', req_id)
     query_vector = embeddings.get_embedding(query_image, cached=False)
+
+    log.debug("%s Matching against %d", req_id, len(images))
     image_vectors = [embeddings.get_embedding(__file_path(img['id'])) for img in images]
 
-    similarity = cosine_similarity([query_vector], image_vectors)
+    log.debug('%s Finding similar images', req_id)
+    similarity = 1 - cosine_similarity([query_vector], image_vectors)
 
-    return reversed(sorted(zip(images, similarity[0]), key=lambda x: x[1]))
+    return sorted(zip(images, similarity[0]), key=lambda x: x[1])
 
 
 if __name__ == "__main__":
