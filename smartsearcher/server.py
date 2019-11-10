@@ -10,6 +10,11 @@ from . import repository
 
 import os
 import logging
+import uuid
+
+logging.basicConfig(level=logging.DEBUG)
+
+log = logging.getLogger('server')
 
 app = Flask(__name__)
 CORS(app)
@@ -21,11 +26,17 @@ def upload():
 
 @app.route('/search', methods=['POST'])
 def search():
+    req_id = str(uuid.uuid4())
     f = request.files['file']
     img_upload_path = os.path.join('tmp', secure_filename(f.filename))
     f.save(img_upload_path)
 
+    log.info('%s: Received search request', (req_id,))
+
+    log.info('%s: Running classifier', (req_id,))
     predictions = classifier.predict(img_upload_path)
+
+    log.info('%s: Finding matching images', (req_id,))
     match = category_matcher.find_category(predictions)
 
     category = match['category']
@@ -41,6 +52,5 @@ def discover():
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
     bootstrap.bootstrap()
     app.run(debug=True, host='0.0.0.0')
