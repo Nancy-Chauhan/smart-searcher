@@ -4,6 +4,8 @@
 
 Frontend : https://github.com/Nancy-Chauhan/smart-searcher-frontend 
 
+Presentation : https://docs.google.com/presentation/d/1bVIlv-9ic-HWjtiqAQ-IBYZ3UtWyLCeE0A58OAnCfqo/edit#slide=id.p1
+
 ## Pre-requisites
 
 1. Python 3.7 🐍
